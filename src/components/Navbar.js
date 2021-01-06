@@ -1,14 +1,15 @@
-import SearchBox from './SearchBox';
+// import SearchBox from './SearchBox';
 
-export default function Navbar() {
+function Navbar() {
   return (
-    <nav>
-      <div>
-        <a href='/'>SHow Search</a>
+    <nav className='navbar'>
+      <h1>Tv Shows</h1>
+      <div className='links'>
         <a href='/'>Popular Shows</a>
         <a href='/'>Favorites</a>
-        <SearchBox />
       </div>
     </nav>
   );
 }
+
+export default Navbar;

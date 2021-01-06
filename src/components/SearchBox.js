@@ -1,9 +1,12 @@
-import React from 'react';
-
-export default function SearchBox() {
+function SearchBox() {
+  const handleClick = (e) => {
+    console.log(e);
+  };
   return (
-    <div>
+    <div className='searchBox'>
       <input type='search' placeholder='Search for Shows...'></input>
+      <button onClick={(e) => handleClick(e.target)}>Search</button>
     </div>
   );
 }
+export default SearchBox;
