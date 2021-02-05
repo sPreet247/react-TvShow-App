@@ -5,43 +5,32 @@ import Navbar from './components/Navbar';
 import SearchBox from './components/SearchBox';
 
 function App() {
-  // const [error, setError] = useState(null);
-  // const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios
       .get('http://api.tvmaze.com/search/shows?q=girls')
       .then((response) => setItems(response.data));
-    // .then(
-    //   (data) => {
-    //     setIsLoaded(true);
-    //     setItems(data);
-    //   },
-    //   (error) => {
-    //     setIsLoaded(true);
-    //     setError(error);
-    //   }
-    // );
   }, [items]);
 
   return (
-    <div className='App'>
+    <div>
       <Navbar />
-      <div className='content'>
+      <div>
         <SearchBox />
-        <ul>
-          {items &&
-            items.map((item) => (
-              <li key={item.id}>
-                <img
-                  className='.image-card'
-                  src={item.show.image.medium}
-                  alt=''
-                ></img>
-              </li>
-            ))}
-        </ul>
+      </div>
+      <div className='content'>
+        {items &&
+          items.map((item) => (
+            <div key={item.id}>
+              <img
+                className='image-card'
+                src={item.show.image.medium}
+                alt=''
+              ></img>
+              <p>Ratings: {item.show.rating.average}/10</p>
+            </div>
+          ))}
       </div>
     </div>
   );
